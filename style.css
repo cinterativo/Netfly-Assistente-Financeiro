@@ -1,0 +1,233 @@
+/* https://graphemica.com/%F0%9F%94%8D     SYMBOLS u+2315 🕴 U+1F574 • U+1F576 🕶 */
+/***/
+:root{touch-action: pan-x pan-y;} 
+  
+html {
+  font-family: sans-serif;   
+  border: none;
+  margin: none;
+  padding: none;    
+}
+
+body{ 
+  max-height: calc(100vh - 80px);    
+  margin: 20px 16px;   
+  padding:20px;   
+  background-image: linear-gradient(to right, MidnightBlue, darkslateblue, MidnightBlue);    
+  border-top: solid 4px pink;
+  border-bottom: solid 4px pink;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;     
+  overflow: hidden;  
+}
+
+header{  
+  padding-right: 16px;  
+  text-wrap: nowrap;
+  background-image: linear-gradient(DarkViolet, indigo, DarkViolet);
+  display: flex;
+  justify-content: space-between;   
+  align-items: center;
+  background-color: #ffffff;
+}
+
+header > h1{ 
+  font-size:larger;
+  font-weight: bold; 
+  letter-spacing: 3px;    
+  border-radius: 6px;
+  padding: 0 16px;    
+  color: white;
+  border: none;overflow: hidden;  
+}
+
+header > input[type="button"]{
+  width: 10%;  
+  box-shadow: 0 8px 6px -6px black;
+  background-color: #ffffff;
+}
+header > input[type="button"]::content{background-color: #ffffff;}
+
+main{ 
+  padding: 16px;  
+  border-radius: 6px;
+  padding-bottom: 16px;
+  background-image: linear-gradient(to left, gainsboro , silver, gainsboro);    
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; overflow: hidden; 
+}
+
+form{
+  border-radius: 6px;     
+  box-shadow: 2px 2px 2px black; 
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  gap: 20px; 
+  overflow: hidden; 
+}
+
+form > div{
+  box-shadow: 0 8px 6px -6px black;
+  display: flex;
+  justify-content: space-around;
+}
+
+form > div:nth-child(1){
+  padding: 4px 0;
+  font-size:larger;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  background-image: linear-gradient(45deg, slateblue 50%, indianred 50%);
+}
+
+form > section{ 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+form > section > label.hidden{display: none;}
+form > section > label > div.hidden{display: none;}
+form > section > label > input[type="text"].hidden{display: none;}
+
+form > section > label{
+  text-wrap: nowrap;
+  padding-left: 12px;
+  line-height: 28px;
+  vertical-align:auto;
+  box-shadow: 2px 0px 2px 2px white; 
+  color: tomato;
+}
+
+label > div{
+  display: flex; 
+  justify-content: space-between;
+}
+
+label > div > input[type="text"]:not(:valid) + input[class="saveNewOption"]{display: none;}
+
+label, select, input[type="text"], input[type="date"]{  
+  font-size: 16px;
+  background-color: lavender;
+  border-radius: 5px; 
+  display: grid;  
+  grid-template-columns: 1fr 3fr;    border: none;
+}
+
+.unchecked, .checked{display:none;}
+label input:not(:checked) ~ .unchecked{display:inline;}
+label input:checked ~ .checked{display:inline;
+}
+
+select:disabled, input[type="date"]:disabled, input[type="text"]:disabled{
+  cursor:not-allowed;  
+  background-image: linear-gradient(lavender, darkgray, lavender);  
+}
+
+input[type=button]{
+  height: fit-content;
+  font-size: larger;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  text-wrap: nowrap;
+  padding: 1px;  
+  color: white;
+  border-radius: 6px;
+}
+
+form > div:last-child{background-image: linear-gradient(-45deg, slateblue 50%, indianred 50%);}
+
+form > div, input[type=button]:first-child{background-color: PaleVioletRed;}
+
+form > div, input[type=button]:not(:first-child){background-color: rebeccapurple;}
+
+input[type=button]:active{opacity: 0;}
+
+input[type=button]:disabled{cursor: not-allowed;}
+
+
+div[class="tableContainer, printable"]{  
+  border: solid white;
+  box-shadow: 2px 2px 2px black; 
+  overflow: auto;
+}
+
+table{
+  width: 100%;
+  color: lavender;
+  border-collapse: collapse;  
+}
+
+table > thead{
+  top: 0 !important; 
+  position: sticky;
+  text-wrap: nowrap;  
+  background-color: darkslateblue;
+  border-bottom:4px solid white;     
+}
+
+table > tr , th, td{text-align: left;}
+table > tr , th:nth-child(6), td:nth-child(6){text-align: right;}
+table > tr , th:last-child, td:last-child{text-align: right;}
+table > thead > tr{height: 32px;}
+table > thead > tr:first-child{box-shadow:3px 3px 3px black;}
+table > thead > tr .filter{background-color: magenta;}
+table > thead > tr .filter:after{content: " \01F50D";}
+table > thead > tr > th:first-child{display: none;}
+table > thead > tr > th > select{width: 100%;} 
+
+table > tbody > tr:last-child{border-bottom:4PX solid white;}
+table > tbody> tr > td:first-child{display: none;}
+table > tbody > tr > td{
+  background-color: SlateBlue;
+  color: PapayaWhip;
+  padding: 3px;
+  box-shadow: 0 1px;
+}
+table > tfoot > tr:first-child{box-shadow: 4px 4px 4px black; height: 28px;}
+table > tfoot> tr > th:first-child{display: none;}
+table > tfoot > tr:first-child {
+  background-color: darkslateblue;
+  color: white;
+}
+
+/** footer */
+footer{  
+  display: none;
+  height: min-content;   
+  background-image: linear-gradient(indigo, DarkViolet, indigo);    
+}
+
+nav[class="menu"]{justify-content: space-around;}
+
+nav[class="menu"] > button > a{
+  font-weight: bolder;
+  text-wrap: nowrap;
+  padding: 6px;    
+  letter-spacing: 4px;      
+}
+
+@media print{   
+  body, html {
+      size: A4;
+      height: unset !important;
+      min-height: unset !important;
+      break-before: always;
+  } 
+  main{padding: 0px;} 
+  @page {        
+      @bottom-right {content:"Página " counter(page) "/" counter(pages);}
+  }
+} 
+
+@media (orientation: landscape) {
+  .nonPrintable{display: none;}    
+}
+
+/* .print-iframe{background-image: linear-gradient(to right, MidnightBlue, darkslateblue, MidnightBlue);}
+table[id="print-iframe"]{background-image: linear-gradient(to right, MidnightBlue, darkslateblue, MidnightBlue);} */

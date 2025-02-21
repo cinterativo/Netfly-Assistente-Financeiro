@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Assistente Financeiro</title>
+</head>
+<body>
+    <header> 
+        <h1> <strong>Assistente Financeiro:</strong> </h1>
+        <input type="button" data-table='table[id="financialTable"] thead tr' value="&#128438;" class="print">
+    </header>
+        
+    <main>    
+
+        <form action="" id="financialInputs" class="financialInputs, nonPrintable"> 
+            <div id="">                       
+                <select title="Entradas" id="selectRevenues" data-flow="1/0"
+                    data-element='form[id="financialInputs"]' data-restricted='section[class="mainSection"]'                
+                    data-currency='input[id="inputCurrency"]' data-description='input[id="inputDescription"]'>                    
+                    <option value="" selected disabled>Entradas &#43;</option>
+                    <optgroup label="Recebimentos de: &#8657;">
+                        <option data-account='select[id="selectAccount"] optgroup[label="Investimentos:"]' 
+                        data-display="none" value="resgate">Investimentos</option> 
+                        <option data-account='select[id="selectAccount"] optgroup[label="Receitas:"]' 
+                        data-display="" value="Recebimento">Receitas</option> 
+                    </optgroup>
+                </select>  
+                
+                <select title="Saídas" id="selectExpenses" data-flow="0/1"   
+                    data-element='form[id="financialInputs"]' data-restricted='section[class="mainSection"]'                
+                    data-currency='input[id="inputCurrency"]' data-description='input[id="inputDescription"]'>
+                    <option value="" selected disabled>Saídas &#8722;</option>
+                    <optgroup label="Pagamentos: &#8659;">
+                        <option data-account='select[id="selectAccount"] optgroup[label="Investimentos:"]' 
+                        data-display="" value="Aplicação">Investimentos</option>
+                        <option data-account='select[id="selectAccount"] optgroup[label="Despesas:"]' 
+                        data-display="" value="Pagamento">Despesas</option>  
+                    </optgroup>
+                </select>                                    
+            </div>   
+
+            <section class="mainSection" data-set="financialInputs" 
+                data-element='table[id="financeTable"] tbody'>
+                
+                <label class="hidden">
+                    <input type="text" id="timestamp" class="financialInputs" title="timeId" readonly required>
+                    <input type="text" id="localDate" class="financialInputs" title="data" readonly required>    
+                </label>  
+                
+                <label> 
+                    <span>Data.:</span>    
+                    <input type="date" id="inputDate" data-date='input[id="localDate"]'
+                    data-currency='input[id="inputCurrency"]' required disabled>      
+                </label>     
+  
+                <label> 
+                    <span>Conta.:</span>
+                    <select id="selectAccount" class="financialInputs" data-doublecontent="originAccount" 
+                    data-table='table[id="financialTable"]' data-column="3" title="Contas"
+                    data-description='input[id="inputDescription"]'  required disabled>
+                        <option value="" selected disabled>Selecionar</option>
+
+                        <optgroup label="Investimentos:">
+                            <option data-display="" value="addNewOption">Adiconar Investimento:>>></option>
+                        </optgroup>
+
+                        <optgroup label="Receitas:">
+                            <option data-display="" value="addNewOption">Adiconar Receita:>>></option>
+                        </optgroup>                        
+                                                
+                        <optgroup label="Despesas:">
+                            <option value="">Aluguel e Condominio</option>
+                            <option value="">Agua, luz e comunicacao</option>
+                            <option value="">Impostos e Taxas</option>
+                            <option value="">Material de Limpeza</option>
+                            <option data-display="" value="addNewOption">Adicionar Despesa:>>></option>
+                        </optgroup> 
+
+                    </select> 
+                    <div class="hidden"> 
+                        <input type="text" id="newAccount" placeholder="Descrição da Despesa" 
+                        pattern=".{10,27}" maxlength="27" value="">
+                        <input type="button" value="&#128465;" class="cancelNewOption">
+                        <input type="button" value="&#128427;" class="saveNewOption" disabled>
+                    </div>
+                </label>
+
+                <label> 
+                    <span>Descrição.:</span>                     
+                    <input type="text" id="inputDescription" class="financialInputs" 
+                    data-currency='input[id="inputCurrency"]' placeholder="" 
+                    pattern=".{9,27}" maxlength="27" required disabled>
+                </label>
+               
+                <label>
+                    <span>Valor.:</span>
+                    <input type="text" id="flowEntries" class="financialInputs, hidden" value="" readonly required>
+                    <input type="text" id="flowOutLets" class="financialInputs, hidden" value="" readonly required>
+                    <input type="text" id="inputCurrency" data-flow="1/0" 
+                    placeholder="R$ 0,00" data-buton='input[class="save"]' pattern=".{4,10}"
+                    inputmode="numeric"  maxlength="10" required disabled>
+                </label> 
+                                 
+            </section>
+
+            <div data-restriction="">
+                <input type="button" data-restricted='section[class="mainSection"]'
+                value="Cancelar &#128465;" class="cancel">
+                <input type="button" data-date='input[id="inputDate"]' value="Salvar &#128427;" 
+                data-currency='input[id="inputCurrency"]' class="save">
+            </div>
+
+        </form>    
+
+        <div class="tableContainer, printable">
+            <table id="financialTable" >
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th colspan="4" class="readonly"></th>                        
+                        <th colspan="2" class="readonly">
+                            <select name="" id="selectReport" class="selectReport" title="Relatórios">
+                                <option value="" disabled selected>Relatótio:</option>
+                                <optgroup label="Períodos:">
+                                    <option class="day" value="">Hoje</option>
+                                    <option class="week" value="">Semana Corrente</option>
+                                    <option class="lastWeek" value="">Semana Anterior</option>
+                                    <option class="month" value="">Mês Corrente</option>
+                                    <option class="lastMonth" value="">Mês Anterior</option>
+                                    <option class="fullYear" value="">Ano Corrente</option>
+                                    <option class="lastYear" value="">Ano Anterior</option>
+                                </optgroup>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>ID:</th>
+                        <th>Data</th>
+                        <th>Origem</th>
+                        <th>Conta</th>
+                        <th>Descrição</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                    </tr>        
+                </thead>
+                <tbody> </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th> <th></th> <th></th> <th>Soma:</th> <th></th> 
+                        <th class="flowEntries">0,00</th> <th class="flowOutLets">0,00</th>
+                    </tr>
+                </tfoot>        
+            </table>
+        </div>    
+        
+    </main>
+
+    <footer class="nonPrintable">
+      <nav class="menu">
+        <a href="./report.html">Relatório</a>
+        <a href="./home.html">Home</a>
+      </nav>      
+    </footer>
+  
+    <script src="./index.js"></script>
+    <script src="./usefulFunctions.js"></script>
+</body>
+</html>
